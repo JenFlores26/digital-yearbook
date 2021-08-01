@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" type="text/css" href="style3.css">
+<style>
+.sidenav {
+  width: 130px;
+  position: fixed;
+  z-index: 1;
+  top: 20px;
+  left: 10px;
+  background: #eee;
+  overflow-x: hidden;
+  padding: 8px 0;
+}
+
+.sidenav a {
+  padding: 6px 8px 6px 16px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #2196F3;
+  display: block;
+}
+
+.sidenav a:hover {
+  color: #064579;
+}
+
+
+.main {
+  margin-left: 140px; /* Same width as the sidebar + left position in px */
+  font-size: 28px; /* Increased text to enable scrolling */
+  padding: 0px 10px;
+}
+
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
+  .button {
+  border-radius: 25px;  
+  border:none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  color: black;
+  
+}
+
+.button1 {background: linear-gradient(to right, yellow, yellow);} /* Green */
+.button2 {background: linear-gradient(to right, #9C27B0, #E040FB);} /* Blue */
+}
+</style>
+</head>
+<body>
+<form action="scripts.php" method="post">
+
+<div class="sidenav">
+  <a href="#">News</a>
+  <a href="#">Campus Officials</a>
+  <a href="#">Dept. Chairpersons & Program Coord.</a>
+  <a href="#">RDE Services</a>
+  <a href="#">OSAS</a>
+  <a href="#">GAD Services</a>
+  <a href="#">Admin, Finance Services & Others</a><hr>
+  <a style="font-size: 20px; color: #fafafa; padding: 8px 8px 8px 32px;">Courses</a>
+  <a href="#">BSE</a>
+  <a href="#">BSBM</a>
+  <a href="#">BSCS</a>
+  <a href="#">BSHRM</a>
+  <a href="#">BSIT</a>
+  <a href="#">BSC</a>
+  <a href="#">BSP</a>
+  <hr>
+  <a href="select.php">Logout</a>
+  <br>
+  <br>
+  <br>
+  <br>
+  <h4 style="padding: 8px 8px 8px 32px; text-decoration: none; font-size: 20px; color: #fafafa; display: block; transition: 0.3s;"><?php echo  date("m/d/Y");?></h4>
+</div>
+
+
+<div class="main">
+<button type="submit" name="Adds" class="button button1">Add Registrar</button>
+<table id="customers">
+ <tr>
+  <th>Email</th>
+<th>Password</th>
+<th>Firstname</th>
+<th>Middlename</th>
+<th>Lastname</th>
+<th>Usertype</th>
+</tr>
+<?php
+$db = mysqli_connect('localhost', 'root', '', 'yearbook');
+$result = mysqli_query($db,"SELECT * FROM users WHERE usertype='registrar'");
+
+while($row = mysqli_fetch_array($result)){
+echo "<tr>";
+echo "<td>" . $row['email'] . "</td>";
+echo "<td>" . $row['password'] . "</td>";
+echo "<td>" . $row['fname'] . "</td>";
+echo "<td>" . $row['mname'] . "</td>";
+echo "<td>" . $row['lname'] . "</td>";
+echo "<td>" . $row['usertype'] . "</td>";
+echo "</tr>";
+}
+echo "</table>";
+mysqli_close($db);
+?>
+</table>
+</div>
+</form>
+</body>
+</html> 
+
+
+-------------------------------------------------------------------
+
+<!DOCTYPE html>
+<html>
+<head>
+  <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" type="text/css" href="style3.css">
+<style>
+.sidenav {
+  width: 190px;
+  position: fixed;
+  z-index: 1;
+  background: #0275d8;
+  overflow-x: hidden;
+  padding: 8px 0;
+}
+
+.sidenav a {
+  padding: 6px 8px 6px 16px;
+  text-decoration: none;
+  font-size: 16px;
+  color: white;
+  display: block;
+}
+
+
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
+  .button {
+  border-radius: 25px;  
+  border:none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  color: black;
+  
+}
+
+.button1 {background: linear-gradient(to right, yellow, yellow);} /* Green */
+.button2 {background: linear-gradient(to right, #9C27B0, #E040FB);} /* Blue */
+}
+</style>
+</head>
+<body>
+<form action="scripts.php" method="post">
+<div class="row">
+  <div class="column" style="width:190px;">
+<div id="mySidenav" class="sidenav">
+  <a href="#">News</a>
+  <a href="#">Campus Officials</a>
+  <a href="#">Dept. Chairpersons & Program Coord.</a>
+  <a href="#">RDE Services</a>
+  <a href="#">OSAS</a>
+  <a href="#">GAD Services</a>
+  <a href="#">Admin, Finance Services & Others</a><hr>
+  <a style="font-size: 20px; color: #fafafa; padding: 8px 8px 8px 32px;">Courses</a>
+  <a href="#">BSE</a>
+  <a href="#">BSBM</a>
+  <a href="#">BSCS</a>
+  <a href="#">BSHRM</a>
+  <a href="#">BSIT</a>
+  <a href="#">BSC</a>
+  <a href="#">BSP</a>
+  <hr>
+  <a href="#">Milestones & activities</a>
+  <a href="Reg1.php">Registered Accounts</a>
+  <a href="select.php">Logout</a>
+  <br>
+  <br>
+  <br>
+  <br>
+  <h4 style="padding: 8px 8px 8px 32px; text-decoration: none; font-size: 20px; color: #fafafa; display: block; transition: 0.3s;"><?php echo  date("m/d/Y");?></h4>
+</div>
+
+</div>
+
+<div class="column">
+<button type="submit" name="Adds" class="button button1">Add Account</button>
+<table id="customers">
+ <tr>
+  <th>Email</th>
+<th>Password</th>
+<th>Firstname</th>
+<th>Middlename</th>
+<th>Lastname</th>
+<th>Usertype</th>
+
+</tr>
+<?php
+$db = mysqli_connect('localhost', 'root', '', 'yearbook');
+$result = mysqli_query($db,"SELECT * FROM users");
+
+while($row = mysqli_fetch_array($result)){
+echo "<tr>";
+echo "<td>" . $row['email'] . "</td>";
+echo "<td>" . $row['password'] . "</td>";
+echo "<td>" . $row['fname'] . "</td>";
+echo "<td>" . $row['mname'] . "</td>";
+echo "<td>" . $row['lname'] . "</td>";
+echo "<td>" . $row['usertype'] . "</td>";
+echo "</tr>";
+}
+echo "</table>";
+mysqli_close($db);
+?>
+</table>
+</div>
+</div>
+</form>
+</body>
+</html> 
+
+-------------------------------
+$to = "rodneyarceno05@gmail.com";
+         $subject = "Registration Validation";
+         $message = "<p>Hi! </p>";
+         $message .= "<p>Someone has been registered to your system. His/her information that he/she input are the following:<br><br>School ID No: ".$_POST['Num']."<br>Email: ".$_POST['email']."<br>Full Name: ".$_POST['firstname']." ".$_POST['middlename']." ".$_POST['lastname']."<br>Password: ".$_POST['psw']."<br>Contact No: ".$_POST['conn']."<br>User Type: Student<br><br>If you think that all of these info from your data are correct, you can add it by <b>Registered Accounts > Add Account</b>. If these informations are false from your data, you can just simply ignore this email. Thank you.</p><br>";
+         $message .= "<p>-System Bot</p><br>";
+         $header = "From: rarceno503@gmail.com \n";
+         $header .= "Cc:rarceno503@gmail.com \n";
+         $header .= "MIME-Version: 1.0\r\n";
+         $header .= "Content-type: text/html\n";
+         $retval = mail ($to,$subject,$message,$header);
+            if( $retval == true ) {
+            echo "<script>alert('Thank you for registering on our system. Please wait for your Confirmation Email.');window.location='LC.php';</script>";
+         }else {
+            echo "<script>alert('Error Inputs');window.location='register.php';</script>";
+         }
